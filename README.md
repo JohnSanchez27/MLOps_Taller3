@@ -99,4 +99,4 @@ El proyecto se gestiona a través de la interfaz web de Airflow, donde se pueden
 
 A continuación se muestra una captura de pantalla de la interfaz de Airflow, donde se visualizan los DAGs definidos para este proyecto:
 
-![alt text](image.png)
+![alt text](image-1.png)
