@@ -6,10 +6,15 @@
 
 ## 📂 Estructura del Proyecto
 
-La estructura del proyecto está organizada para garantizar una correcta separación de responsabilidades y modularidad. Los flujos de trabajo se encuentran en la carpeta `dags/`, donde cada script maneja tareas específicas como la carga, eliminación y entrenamiento de datos. La carpeta `datos/` contiene los archivos de entrada requeridos para el procesamiento, mientras que `logs/` almacena los registros de ejecución para facilitar el monitoreo. Los archivos de configuración, como `docker-compose.yml` y `Dockerfile`, permiten la implementación del entorno en contenedores, asegurando escalabilidad y reproducibilidad.
+La estructura del proyecto está organizada para garantizar una correcta separación de responsabilidades y modularidad. Los flujos de trabajo se encuentran en la carpeta dags/, donde cada script maneja tareas específicas como la carga, eliminación y entrenamiento de datos. La carpeta app/ contiene los scripts principales de la aplicación, incluyendo el manejo de modelos y dependencias. La carpeta datos/ contiene los archivos de entrada requeridos para el procesamiento, mientras que logs/ almacena los registros de ejecución para facilitar el monitoreo. Los archivos de configuración, como docker-compose.yml y Dockerfile, permiten la implementación del entorno en contenedores, asegurando escalabilidad y reproducibilidad.
 
 ```
 TALLER_3/
+│── app/                      # Código de la aplicación principal
+│   ├── cargar_modelos.py     # Script para carga de modelos
+│   ├── Dockerfile.app        # Dockerfile específico para la app
+│   ├── main.py               # Script principal
+│   ├── requirements.txt      # Dependencias específicas de la app
 │── dags/                      # Definición de flujos de trabajo
 │   ├── carga_datos.py         # Carga de datos
 │   ├── elimina_datos.py       # Eliminación de datos
@@ -20,7 +25,8 @@ TALLER_3/
 │── plugins/                   # Extensiones para Airflow
 │── docker-compose.yml         # Orquestación de servicios
 │── Dockerfile                 # Construcción de la imagen Docker
-│── requirements.txt           # Dependencias del proyecto
+│── README.md                  # Documentación del proyecto
+│── requirements.txt           # Dependencias generales del proyecto
 ```
 
 ## 🛠 Instancia MySQL
@@ -88,3 +94,9 @@ El uso de Airflow en entornos productivos conlleva varios desafíos técnicos qu
 
 ## 📊 Uso
 El proyecto se gestiona a través de la interfaz web de Airflow, donde se pueden visualizar, programar y ejecutar flujos de trabajo. Los DAGs ubicados en `dags/` pueden ser modificados para adaptarse a nuevos requerimientos o incorporar nuevas funcionalidades. Los registros de ejecución almacenados en `logs/` proporcionan información detallada sobre el estado de cada tarea, lo que facilita la depuración y optimización del sistema.
+
+## 🌐 Vista de DAGs en Airflow
+
+A continuación se muestra una captura de pantalla de la interfaz de Airflow, donde se visualizan los DAGs definidos para este proyecto:
+
+![Vista de DAGs en Airflow](img/airflow_dags_view.png)
