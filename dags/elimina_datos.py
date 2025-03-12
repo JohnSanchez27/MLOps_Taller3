@@ -10,7 +10,6 @@ default_args = {
     'start_date': datetime(2025, 3, 10)  # Fecha de inicio fija
 }
 
-
 def delete_data():
     """
     Función para eliminar los datos de la tabla 'penguins' en la base de datos MySQL.
@@ -29,7 +28,6 @@ def delete_data():
         print("Contenido de la tabla 'penguins' eliminado exitosamente.")
     else:
         print("La tabla 'penguins' no existe en la base de datos.")
-
 
 # Definición del DAG para la eliminación de datos
 with DAG(

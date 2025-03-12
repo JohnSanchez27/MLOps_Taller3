@@ -49,8 +49,3 @@ def postPinguino(pinguino: Pinguino):
     # Convertir la predicción en un formato JSON serializable
     return {"message": "Predicción realizada", "prediccion": prediccion.tolist()}
 
-    
-
-
-
-

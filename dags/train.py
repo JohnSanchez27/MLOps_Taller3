@@ -76,7 +76,6 @@ def train_model():
     numeric_cols = X.select_dtypes(exclude="category").columns
     cat_cols = X.select_dtypes(include="category").columns
 
-
     # Entrenar el modelo SVM
     clf.fit(X_train, y_train)
 
@@ -92,7 +91,6 @@ def train_model():
     with open('/opt/airflow/datos/SVM_model_schema.json', 'w') as f:
         json.dump(schema_info, f)
         
-
 # Crear el DAG para el entrenamiento del modelo SVM
 dag = DAG('training', default_args=default_args, schedule_interval=None)
 
