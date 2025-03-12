@@ -73,6 +73,12 @@ docker-compose stop
  https://localhost:8080 
 ```
 
+5. Acceder a la interfaz de Airflow 
+```
+ https://localhost:8989/docs 
+```
+
+
 ## 🏗️ Arquitectura y Configuración de Servicios
 
 La arquitectura del proyecto está diseñada para garantizar la ejecución eficiente y escalable de flujos de trabajo en entornos distribuidos. Airflow gestiona la planificación y ejecución de tareas mediante `CeleryExecutor`, que permite distribuir la carga entre múltiples workers. Las bases de datos `PostgreSQL` y `MySQL` almacenan la metadata de Airflow y los datos procesados respectivamente. Redis actúa como un `broker` de mensajes, facilitando la comunicación entre los diferentes componentes del sistema. El uso de volúmenes persistentes asegura la integridad de los datos, evitando pérdidas tras reinicios del sistema.

@@ -310,6 +310,19 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+  appservice:
+    build: 
+      context: ./app
+      dockerfile: Dockerfile.app
+    container_name: my_app
+    ports:
+      - "8989:8989"  # Exponer FastAPI
+    volumes:  # Añade esta línea y la siguiente para incluir tu volumen de dataset
+      - ./datos:/app/datos
+    restart: always  # Para que se reinicie si falla
+    command: >
+      sh -c "uvicorn main:app --host 0.0.0.0 --port 8989"
+
 
 # Volúmenes de Docker
 volumes:

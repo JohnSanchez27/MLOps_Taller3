@@ -11,6 +11,7 @@ from sklearn.model_selection import train_test_split
 from airflow.operators.python_operator import PythonOperator
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sqlalchemy import create_engine
+import json
 
 # Configuración de parámetros por defecto del DAG de Airflow
 default_args = {
@@ -71,11 +72,26 @@ def train_model():
         ("SVM", SVC())
     ])
 
+    # Separación de columnas numéricas/categóricas
+    numeric_cols = X.select_dtypes(exclude="category").columns
+    cat_cols = X.select_dtypes(include="category").columns
+
+
     # Entrenar el modelo SVM
     clf.fit(X_train, y_train)
 
     # Guardar el modelo entrenado en un archivo .joblib
-    joblib.dump(clf, '/opt/airflow/datos/SVM_model.joblib')
+    joblib.dump(clf, '/opt/airflow/datos/SVM_model.pkl')
+    
+    schema_info = {
+        "numeric_features": list(numeric_cols),
+        "categorical_features": list(cat_cols)
+    }
+
+    # Guardar el esquema como JSON
+    with open('/opt/airflow/datos/SVM_model_schema.json', 'w') as f:
+        json.dump(schema_info, f)
+        
 
 # Crear el DAG para el entrenamiento del modelo SVM
 dag = DAG('training', default_args=default_args, schedule_interval=None)
