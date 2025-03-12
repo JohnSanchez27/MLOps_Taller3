@@ -127,13 +127,12 @@ mysql:
 
 ### 1️⃣ **Clonar el repositorio**
 
-1. Clonar el repositorio
 ```
 git clone https://github.com/JohnSanchez27/MLOps_Taller3.git
 cd MLOps_Taller3
 
 ```
-2. Configuración de permisosç
+### 2️⃣ **Configuración de permisos**
 
 Si hay errores al iniciar Airflow o FastAPI por problemas de escritura en directorios, ejecuta:
 
@@ -152,12 +151,13 @@ chmod -R 777 /opt/airflow/datos
 exit
 ```
 
-3. Construir el contenedor
+### 3️⃣ **Construir el contenedor**
+
 ```
 docker-compose up --build
 ```
 
-4. Acceder a las interfaces de Airflow y FastAPI
+### 4️⃣ **Acceder a las interfaces de Airflow y FastAPI**
 
 📌 Airflow UI
 ➡️ http://localhost:8080
@@ -165,7 +165,7 @@ docker-compose up --build
 📌 FastAPI Docs
 ➡️ http://localhost:8989/docs
 
-5. Puedes verificar los contenedores activos con:
+### 5️⃣ **Verificar que los servicios están corriendo**
 
 ```
 docker ps
