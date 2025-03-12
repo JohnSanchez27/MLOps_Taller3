@@ -79,7 +79,7 @@ docker-compose stop
  https://localhost:8080 
 ```
 
-5. Acceder a la interfaz de Airflow 
+5. Acceder a la interfaz del API
 ```
  https://localhost:8989/docs 
 ```
